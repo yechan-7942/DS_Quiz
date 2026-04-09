@@ -40,17 +40,20 @@ void my_list::delete_low_score(double n)
     node *prev = NULL;
     while(p!=NULL){
         if(p->score < n){
+                node *del = p;
+                p = p->link;
             if(prev ==NULL){
-                head = p->link;
+                head = p;
             }
             else {
-                prev -> link = p->link;
+                prev -> link = p;
             }
-            delete p;
-            return ;
+             delete del;
         }
+        else{
         prev = p;
         p= p->link;
+        }
     }
 }
 
